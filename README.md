@@ -54,7 +54,7 @@ store.state.number # => 10
 store.state.speak  # => The number is 10
 ```
 
-TODO: Add a more complex example that makes use of selectors.
+TODO: Add a more complex example that makes use of selectors and combined reducers.
 
 
 **Store**
