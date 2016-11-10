@@ -57,6 +57,28 @@ store.state.speak  # => The number is 10
 TODO: Add a more complex example that makes use of selectors.
 
 
+**Store**
+
+TODO
+
+
+**Entities**
+
+Entities are here what state POJOs are in redux. Entities are similar to what is commonly called [Value Objects](http://martinfowler.com/bliki/ValueObject.html). Think of them as entities in a relational database.
+In a blogging system, the entities might be: Post, Comment, Author etc.
+By Rails analogy, if it's an ActiveRecord model, then it's likely an Entity.
+By MVC analogy, not all models are entities but all entities are models. In other words, anything that you would want to save into the state database is an entity. Entities should be serializable and deserializable.
+
+
+**Actions**
+
+TODO
+
+
+**Reducers**
+
+TODO
+
 
 # Rationale
 
