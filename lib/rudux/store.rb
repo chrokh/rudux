@@ -11,6 +11,10 @@ module Rudux
       @state = @reducer.reduce(@state, action)
     end
 
+    def reset state
+      @state = state
+    end
+
     def select selector
       selector.select(@state)
     end

@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'rudux'
-  s.version     = '0.0.1'
-  s.date        = '2016-11-10'
+  s.version     = '0.0.3'
+  s.date        = '2016-12-13',
   s.summary     = "Redux like state management in OO Ruby"
   s.description = "Redux like state management in OO Ruby"
   s.authors     = ["Christopher Okhravi"]
