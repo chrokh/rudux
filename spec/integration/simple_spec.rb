@@ -1,8 +1,8 @@
 require 'rudux/combined'
 
 describe 'Simple' do
-  it 'works' do
 
+  it 'works' do
 
     class State < Rudux::Entity
       attr_reader :posts, :comments
@@ -122,9 +122,13 @@ describe 'Simple' do
     # identity
     expect(store.state.comments.keys[0]).to eq c0.id
 
+    # identity of post has not changed
+    expect(store.state.posts.keys[0]).to eq p0.id
+
     # values
     expect(store.state.comments.values[0].body).to eq "Changed comment"
 
   end
+
 end
 
