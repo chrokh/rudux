@@ -7,8 +7,10 @@ module Rudux
       @state   = state
     end
 
-    def dispatch action
-      @state = @reducer.reduce(@state, action)
+    def dispatch actions
+      Array(actions).each do |action|
+        @state = @reducer.reduce(@state, action)
+      end
     end
 
     def reset state
