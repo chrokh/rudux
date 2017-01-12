@@ -1,8 +1,9 @@
 require 'rudux/combined'
+require 'rudux/hash_reducer'
 
-describe 'Simple' do
+describe 'Rudux' do
 
-  it 'works' do
+  it 'handles object based state' do
 
     class State < Rudux::Entity
       attr_reader :posts, :comments
@@ -76,8 +77,8 @@ describe 'Simple' do
 
       def self.base
         Rudux::Combined.new({
-          posts:    PostReducer,
-          comments: CommentReducer,
+          posts:    Rudux::HashReducer.new(PostReducer),
+          comments: Rudux::HashReducer.new(CommentReducer),
         })
       end
     end

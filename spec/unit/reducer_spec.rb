@@ -16,15 +16,15 @@ describe Rudux::Reducer, '.reduce' do
     end
   end
 
-  context 'given hash of states' do
+  context 'given hash state' do
     let(:states) { {} }
-    it 'delegates to hash reducer' do
-      expect(target).to receive(:reduce_hash_of_states).with(states, action) { :reduced }
+    it 'delegates to single reducer' do
+      expect(target).to receive(:reduce_single_state).with(states, action) { :reduced }
       expect(subject).to eq :reduced
     end
   end
 
-  context 'given single state' do
+  context 'given object state' do
     let(:states) { double :state }
     it 'delegates to single reducer' do
       expect(target).to receive(:reduce_single_state).with(states, action) { :reduced }
@@ -50,35 +50,6 @@ describe Rudux::Reducer, '.reduce_array_of_states' do
     expect(target).to receive(:reduce_single_state).with(state2, action) { :reduced2 }
     expect(target).to receive(:reduce_single_state).with(state3, action) { :reduced3 }
     expect(subject).to eq [:reduced1, :reduced2, :reduced3]
-  end
-end
-
-
-
-describe Rudux::Reducer, '.reduce_hash_of_states' do
-  let(:action) { double :action }
-  let(:target) { Rudux::Reducer }
-  let(:state1)  { double :state1 }
-  let(:state2)  { double :state2 }
-  let(:state3)  { double :state3 }
-  let(:hash) { { s1: state1, s2: state2, s3: state3 } }
-  let(:reduced1) { double :reduced1, id: :new1 }
-  let(:reduced2) { double :reduced2, id: :new2 }
-  let(:reduced3) { double :reduced3, id: :new3 }
-
-  subject { target.reduce_hash_of_states(hash, action) }
-
-  before do
-    expect(target).to receive(:reduce_single_state).with(state1, action) { reduced1 }
-    expect(target).to receive(:reduce_single_state).with(state2, action) { reduced2 }
-    expect(target).to receive(:reduce_single_state).with(state3, action) { reduced3 }
-  end
-
-  it 'delegates to single state reducer for each state and sets new keys' do
-    expect(subject).to eq(
-      new1: reduced1,
-      new2: reduced2,
-      new3: reduced3)
   end
 end
 

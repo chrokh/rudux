@@ -7,7 +7,12 @@ module Rudux
     def reduce state, action
       @hash.keys.map do |key|
         reducer = @hash[key]
-        reduced = reducer.reduce(state.send(key), action)
+        if state.is_a? Hash
+          substate = state[key]
+        else
+          substate = state.send(key)
+        end
+        reduced = reducer.reduce(substate, action)
         Hash[key, reduced]
       end.reduce({}, &:merge!)
     end
